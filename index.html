@@ -4,12 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aggelos — Growth Advisory</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,700;0,800;0,900;1,700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; overflow-x: hidden; }
 
   body {
-    background: #fff;
+    background: #f4f1ec;
     color: #000;
     font-family: 'IBM Plex Mono', 'Courier New', monospace;
     font-size: 14px;
@@ -17,320 +18,291 @@
     line-height: 1.6;
   }
 
-  .page {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem 4rem;
+  /* === LAYOUT === */
+  .layout {
+    display: flex;
+    min-height: 100vh;
   }
 
-  /* Every box: fully closed */
-  .box {
-    border: 2px solid #000;
+  /* Left gradient strip */
+  .gradient-strip {
+    width: 10px;
+    flex-shrink: 0;
+    background: linear-gradient(
+      180deg,
+      #e8c4a0 0%,
+      #d4a07a 12%,
+      #c98a6e 22%,
+      #be7468 32%,
+      #b36278 42%,
+      #9a5488 52%,
+      #7a4a8a 62%,
+      #5c4080 72%,
+      #3e3672 82%,
+      #2a2a5e 92%,
+      #1e1e4a 100%
+    );
   }
 
-  /* Shared border between stacked boxes */
-  .box + .box {
-    margin-top: -2px;
+  /* Content */
+  .content-side {
+    width: 55%;
+    min-width: 0;
+    flex-shrink: 0;
+    background: #f4f1ec;
+    padding: 0 0 4rem 1.8rem;
   }
 
-  .box-pad {
-    padding: 2rem 1.8rem;
+  /* Photo */
+  .photo-side {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: calc(10px + 55%);
+    overflow: hidden;
   }
 
-  /* Headings */
+  .photo-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    filter: grayscale(100%) contrast(1.1);
+    display: block;
+  }
+
+  /* === BOXES === */
+  .box { border: 2px solid #1a1a1a; }
+  .box + .box { margin-top: -2px; }
+  .box-pad { padding: 1.8rem 1.6rem; }
+
+  /* Headings — Bodoni Moda: sharp Didone, high contrast */
   h2 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Bodoni Moda', 'Didot', Georgia, serif;
     font-weight: 900;
-    font-size: clamp(2.2rem, 5.5vw, 3.2rem);
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    line-height: 1.05;
+    margin-bottom: 1.4rem;
+    letter-spacing: -0.02em;
   }
 
   h3 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Bodoni Moda', 'Didot', Georgia, serif;
     font-weight: 900;
-    font-size: 1.55rem;
-    line-height: 1.15;
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    line-height: 1.1;
+    margin-bottom: 0.9rem;
+    letter-spacing: -0.01em;
   }
 
   /* Body */
   .body-text {
-    font-size: 13.5px;
-    line-height: 1.65;
-    max-width: 600px;
+    font-size: 12.5px;
+    line-height: 1.7;
   }
+  .body-text + .body-text { margin-top: 0.9rem; }
 
-  .body-text + .body-text {
-    margin-top: 1rem;
-  }
-
-  /* Two-col inside a closed box */
+  /* Two-col */
   .two-col-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-
-  .col {
-    padding: 1.8rem;
-  }
-
-  .col-left {
-    border-right: 2px solid #000;
-  }
-
-  .col p {
-    font-size: 13px;
-    line-height: 1.65;
-  }
-
-  .col p + p {
-    margin-top: 0.8rem;
-  }
+  .col { padding: 1.6rem; }
+  .col-left { border-right: 2px solid #1a1a1a; }
+  .col p { font-size: 12.5px; line-height: 1.7; }
+  .col p + p { margin-top: 0.7rem; }
 
   /* Arrow items */
   .arrow-item {
     display: flex;
     align-items: flex-start;
-    gap: 0.6rem;
-    font-size: 13px;
+    gap: 0.5rem;
+    font-size: 12.5px;
     line-height: 1.55;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.6rem;
   }
-
-  .arrow-item span:first-child {
-    flex-shrink: 0;
-  }
+  .arrow-item span:first-child { flex-shrink: 0; }
 
   /* Table */
-  .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-  }
-
+  .data-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
   .data-table thead th {
-    background: #000;
+    background: #1a1a1a;
     color: #fff;
-    font-family: 'IBM Plex Mono', monospace;
     font-weight: 700;
     font-style: italic;
     text-align: left;
-    padding: 0.7rem 1rem;
-    font-size: 13px;
+    padding: 0.6rem 0.9rem;
+    font-size: 12.5px;
   }
-
   .data-table tbody td {
-    padding: 0.9rem 1rem;
+    padding: 0.8rem 0.9rem;
     vertical-align: top;
-    border-bottom: 1px solid #000;
-    font-size: 13px;
+    border-bottom: 1px solid #1a1a1a;
+    font-size: 12.5px;
     line-height: 1.5;
   }
-
-  .data-table tbody tr:last-child td {
-    border-bottom: none;
-  }
+  .data-table tbody tr:last-child td { border-bottom: none; }
 
   /* Links */
-  a {
-    color: #000;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  a:hover {
-    opacity: 0.6;
-  }
+  a { color: #000; text-decoration: underline; text-underline-offset: 2px; }
+  a:hover { opacity: 0.6; }
 
   /* CTA */
   .cta-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 1.8rem;
+    padding: 1.4rem 1.6rem;
   }
-
-  .cta-inner p {
-    font-size: 13.5px;
-    max-width: 480px;
-  }
-
+  .cta-inner p { font-size: 12.5px; max-width: 400px; }
   .cta-btn {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #fff;
-    background: #000;
+    background: #1a1a1a;
     text-decoration: none;
-    padding: 0.6rem 1.4rem;
+    padding: 0.55rem 1.3rem;
     white-space: nowrap;
     transition: opacity 0.2s;
   }
-
   .cta-btn:hover { opacity: 0.75; color: #fff; }
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    .page { padding: 1rem 0.75rem 3rem; }
+  /* Mobile photo */
+  .mobile-photo { display: none; }
 
-    .two-col-inner {
-      grid-template-columns: 1fr;
-    }
+  @media (max-width: 1100px) {
+    .content-side { width: 58%; padding: 0 0 4rem 1.5rem; }
+    .photo-side { left: calc(10px + 58%); }
+  }
 
-    .col-left {
-      border-right: none;
-      border-bottom: 2px solid #000;
-    }
-
-    .cta-inner {
-      flex-direction: column;
-      gap: 1rem;
-      align-items: flex-start;
-    }
+  @media (max-width: 768px) {
+    .layout { flex-direction: column; }
+    .gradient-strip { width: 100%; height: 6px; background: linear-gradient(90deg, #e8c4a0 0%, #c98a6e 25%, #b36278 50%, #7a4a8a 75%, #1e1e4a 100%); }
+    .content-side { width: 100%; padding: 0 1rem 3rem; }
+    .photo-side { display: none; }
+    .mobile-photo { display: block; width: 100%; height: 50vh; overflow: hidden; }
+    .mobile-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; filter: grayscale(100%) contrast(1.1); display: block; }
+    .two-col-inner { grid-template-columns: 1fr; }
+    .col-left { border-right: none; border-bottom: 2px solid #1a1a1a; }
+    .cta-inner { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    h2 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
   }
 </style>
 </head>
 <body>
-<div class="page">
 
-  <!-- Top bar -->
-  <div class="box">
-    <div style="padding: 0.6rem 1.8rem; font-size: 13px;">
-      Aggelos — Product-Led Growth Advisory
-    </div>
-  </div>
+<div class="mobile-photo">
+  <img src="photo.jpeg" alt="Aggelos">
+</div>
 
-  <!-- What I Do -->
-  <div class="box">
-    <div class="box-pad">
-      <h2>What I Do</h2>
-      <p class="body-text">I work with founders and growth leaders at product-led SaaS companies. I help design the growth system, sharpen execution, and level up the person running it.</p>
-      <p class="body-text">Your growth hire gets VP-level thinking without the VP-level hire. 12+ years across consulting, founding, and enterprise product — including product-led sales and hybrid GTM inside large organizations.</p>
-      <p class="body-text">If PLG isn't converting to revenue and nobody owns the fix, that's typically when I get the call.</p>
-    </div>
-  </div>
+<div class="layout">
 
-  <!-- Mentorship / Advisory -->
-  <div class="box">
-    <div class="two-col-inner">
-      <div class="col col-left">
-        <h3>Growth Mentorship</h3>
-        <p>For founders hiring growth talent. I become the senior layer for your growth hire — regular sessions, async support, real-time guidance on the work they're actually doing.</p>
-        <p>They level up faster. You avoid expensive mistakes.</p>
-      </div>
-      <div class="col">
-        <h3>Strategic Advisory</h3>
-        <p>For founders and growth leaders. PLG strategy, upgrade paths, product-sales alignment, experimentation systems, growth roadmap.</p>
-        <p>I help design and stress-test the system — and coach the team running it.</p>
+  <div class="gradient-strip"></div>
+
+  <div class="content-side">
+
+    <div class="box">
+      <div style="padding: 0.55rem 1.6rem; font-size: 12px;">
+        Aggelos — Product-Led Growth Advisory
       </div>
     </div>
-  </div>
 
-  <!-- When Founders Call Me -->
-  <div class="box">
-    <div class="box-pad">
-      <h3>When Founders Call Me</h3>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th style="width: 50px;">#</th>
-            <th>Situation</th>
-            <th style="width: 140px;">Track</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>01</td>
-            <td>You hired your first growth lead and want to set them up to win</td>
-            <td>Mentorship</td>
-          </tr>
-          <tr>
-            <td>02</td>
-            <td>PLG exists but isn't converting to paid — nobody owns the fix</td>
-            <td>Advisory</td>
-          </tr>
-          <tr>
-            <td>03</td>
-            <td>Product and sales keep stepping on each other</td>
-            <td>Advisory</td>
-          </tr>
-          <tr>
-            <td>04</td>
-            <td>Experimentation is happening but decisions aren't moving</td>
-            <td>Both</td>
-          </tr>
-          <tr>
-            <td>05</td>
-            <td>You need senior growth thinking without a full-time VP</td>
-            <td>Mentorship</td>
-          </tr>
-          <tr>
-            <td>06</td>
-            <td>Your upgrade path, PQLs, or pricing need a serious rethink</td>
-            <td>Advisory</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- About / Expertise -->
-  <div class="box">
-    <div class="two-col-inner">
-      <div class="col col-left">
-        <h3>About</h3>
-        <p>12+ years in B2B SaaS across consulting, founding, and enterprise product management. Currently a Strategic Growth PM at IBM working across PLG, product-led sales, and enterprise GTM.</p>
-        <p>I've worked with 50+ companies on growth strategy, pricing, onboarding, and revenue systems.</p>
-      </div>
-      <div class="col">
-        <h3>Expertise</h3>
-        <div class="arrow-item"><span>→</span><span>Product-Led Growth & Product-Led Sales</span></div>
-        <div class="arrow-item"><span>→</span><span>Enterprise GTM & Hybrid Motions</span></div>
-        <div class="arrow-item"><span>→</span><span>Pricing & Packaging Architecture</span></div>
-        <div class="arrow-item"><span>→</span><span>Onboarding & Activation Systems</span></div>
-        <div class="arrow-item"><span>→</span><span>Growth Research & Experimentation</span></div>
-        <div class="arrow-item"><span>→</span><span>50+ SaaS Companies Advised</span></div>
+    <div class="box">
+      <div class="box-pad">
+        <h2>What I Do</h2>
+        <p class="body-text">I work with founders and growth leaders at product-led SaaS companies. I help design the growth system, sharpen execution, and level up the person running it.</p>
+        <p class="body-text">Your growth hire gets VP-level thinking without the VP-level hire. 12+ years across consulting, founding, and enterprise product — including product-led sales and hybrid GTM inside large organizations.</p>
+        <p class="body-text">If PLG isn't converting to revenue and nobody owns the fix, that's typically when I get the call.</p>
       </div>
     </div>
+
+    <div class="box">
+      <div class="two-col-inner">
+        <div class="col col-left">
+          <h3>Growth Mentorship</h3>
+          <p>For founders hiring growth talent. I become the senior layer for your growth hire — regular sessions, async support, real-time guidance on the work they're actually doing.</p>
+          <p>They level up faster. You avoid expensive mistakes.</p>
+        </div>
+        <div class="col">
+          <h3>Strategic Advisory</h3>
+          <p>For founders and growth leaders. PLG strategy, upgrade paths, product-sales alignment, experimentation systems, growth roadmap.</p>
+          <p>I help design and stress-test the system — and coach the team running it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-pad">
+        <h3>When Founders Call Me</h3>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 45px;">#</th>
+              <th>Situation</th>
+              <th style="width: 120px;">Track</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>01</td><td>You hired your first growth lead and want to set them up to win</td><td>Mentorship</td></tr>
+            <tr><td>02</td><td>PLG exists but isn't converting to paid — nobody owns the fix</td><td>Advisory</td></tr>
+            <tr><td>03</td><td>Product and sales keep stepping on each other</td><td>Advisory</td></tr>
+            <tr><td>04</td><td>Experimentation is happening but decisions aren't moving</td><td>Both</td></tr>
+            <tr><td>05</td><td>You need senior growth thinking without a full-time VP</td><td>Mentorship</td></tr>
+            <tr><td>06</td><td>Your upgrade path, PQLs, or pricing need a serious rethink</td><td>Advisory</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="two-col-inner">
+        <div class="col col-left">
+          <h3>About</h3>
+          <p>12+ years in B2B SaaS across consulting, founding, and enterprise product management. Currently a Strategic Growth PM at IBM working across PLG, product-led sales, and enterprise GTM.</p>
+          <p>I've worked with 50+ companies on growth strategy, pricing, onboarding, and revenue systems.</p>
+        </div>
+        <div class="col">
+          <h3>Expertise</h3>
+          <div class="arrow-item"><span>→</span><span>Product-Led Growth & Product-Led Sales</span></div>
+          <div class="arrow-item"><span>→</span><span>Enterprise GTM & Hybrid Motions</span></div>
+          <div class="arrow-item"><span>→</span><span>Pricing & Packaging Architecture</span></div>
+          <div class="arrow-item"><span>→</span><span>Onboarding & Activation Systems</span></div>
+          <div class="arrow-item"><span>→</span><span>Growth Research & Experimentation</span></div>
+          <div class="arrow-item"><span>→</span><span>50+ SaaS Companies Advised</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-pad">
+        <h3>Find Me</h3>
+        <table class="data-table">
+          <thead>
+            <tr><th>Platform</th><th>Description</th><th>Link</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>LinkedIn</td><td>Professional network</td><td><a href="https://www.linkedin.com/in/growth-product-manager/" target="_blank">linkedin.com</a></td></tr>
+            <tr><td>Email</td><td>Direct contact</td><td><a href="mailto:aggelos@growthsandwich.com">aggelos@growthsandwich.com</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="cta-inner">
+        <p>No pitch. A conversation about where growth is stuck and whether I can help.</p>
+        <a href="mailto:aggelos@growthsandwich.com" class="cta-btn">Book a call →</a>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Find Me -->
-  <div class="box">
-    <div class="box-pad">
-      <h3>Find Me</h3>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Platform</th>
-            <th>Description</th>
-            <th>Link</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>LinkedIn</td>
-            <td>Professional network</td>
-            <td><a href="https://www.linkedin.com/in/growth-product-manager/" target="_blank">linkedin.com</a></td>
-          </tr>
-          <tr>
-            <td>Email</td>
-            <td>Direct contact</td>
-            <td><a href="mailto:aggelos@growthsandwich.com">aggelos@growthsandwich.com</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- CTA -->
-  <div class="box">
-    <div class="cta-inner">
-      <p>No pitch. A conversation about where growth is stuck and whether I can help.</p>
-      <a href="mailto:aggelos@growthsandwich.com" class="cta-btn">Book a call →</a>
-    </div>
+  <div class="photo-side">
+    <img src="photo.jpeg" alt="Aggelos">
   </div>
 
 </div>
