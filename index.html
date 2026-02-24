@@ -29,6 +29,41 @@
 <!-- Additional SEO -->
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#f4f1ec">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Aggelos — Product-Led Growth Advisory",
+  "description": "Senior PLG advisor and growth mentor for SaaS founders. Helping product-led companies turn usage into revenue.",
+  "url": "https://growthproductmanager.com",
+  "image": "https://growthproductmanager.com/og-image.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/growth-product-manager/"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Aggelos",
+    "jobTitle": "Product-Led Growth Advisor",
+    "url": "https://www.linkedin.com/in/growth-product-manager/",
+    "knowsAbout": [
+      "Product-Led Growth",
+      "Product-Led Sales",
+      "B2B SaaS",
+      "Growth Strategy",
+      "Pricing and Packaging",
+      "Enterprise GTM"
+    ]
+  },
+  "areaServed": "Worldwide",
+  "serviceType": [
+    "Growth Mentorship",
+    "Strategic PLG Advisory"
+  ]
+}
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,700;0,800;0,900;1,700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -78,7 +113,7 @@
     padding: 0 0 4rem 1.8rem;
   }
 
-  /* Photo */
+  /* Photo — FIX: added background color fallback */
   .photo-side {
     position: fixed;
     top: 0;
@@ -86,6 +121,7 @@
     bottom: 0;
     left: calc(10px + 55%);
     overflow: hidden;
+    background: #2a2a2a;
   }
 
   .photo-side img {
@@ -102,7 +138,7 @@
   .box + .box { margin-top: -2px; }
   .box-pad { padding: 1.8rem 1.6rem; }
 
-  /* Headings — Bodoni Moda: sharp Didone, high contrast */
+  /* Headings */
   h2 {
     font-family: 'Bodoni Moda', 'Didot', Georgia, serif;
     font-weight: 900;
@@ -122,10 +158,7 @@
   }
 
   /* Body */
-  .body-text {
-    font-size: 12.5px;
-    line-height: 1.7;
-  }
+  .body-text { font-size: 12.5px; line-height: 1.7; }
   .body-text + .body-text { margin-top: 0.9rem; }
 
   /* Two-col */
@@ -149,7 +182,13 @@
   }
   .arrow-item span:first-child { flex-shrink: 0; }
 
-  /* Table */
+  /* Table — FIX: responsive */
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .data-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
   .data-table thead th {
     background: #1a1a1a;
@@ -159,6 +198,7 @@
     text-align: left;
     padding: 0.6rem 0.9rem;
     font-size: 12.5px;
+    white-space: nowrap;
   }
   .data-table tbody td {
     padding: 0.8rem 0.9rem;
@@ -169,7 +209,7 @@
   }
   .data-table tbody tr:last-child td { border-bottom: none; }
 
-  /* Links */
+  /* Links — FIX: email rendered by JS to defeat Cloudflare obfuscation */
   a { color: #000; text-decoration: underline; text-underline-offset: 2px; }
   a:hover { opacity: 0.6; }
 
@@ -206,8 +246,12 @@
 
   @media (max-width: 768px) {
     .layout { flex-direction: column; }
-    .gradient-strip { width: 100%; height: 6px; background: linear-gradient(90deg, #e8c4a0 0%, #c98a6e 25%, #b36278 50%, #7a4a8a 75%, #1e1e4a 100%); }
-    .content-side { width: 100%; padding: 0 1rem 3rem; }
+    .gradient-strip {
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #e8c4a0 0%, #c98a6e 25%, #b36278 50%, #7a4a8a 75%, #1e1e4a 100%);
+    }
+    .content-side { width: 100%; padding: 0 0.8rem 3rem; }
     .photo-side { display: none; }
     .mobile-photo { display: block; width: 100%; height: 50vh; overflow: hidden; }
     .mobile-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; filter: grayscale(100%) contrast(1.1); display: block; }
@@ -215,48 +259,21 @@
     .col-left { border-right: none; border-bottom: 2px solid #1a1a1a; }
     .cta-inner { flex-direction: column; gap: 1rem; align-items: flex-start; }
     h2 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+
+    /* FIX: table doesn't break on mobile */
+    .data-table { font-size: 11px; }
+    .data-table thead th { font-size: 11px; padding: 0.5rem 0.6rem; }
+    .data-table tbody td { padding: 0.6rem; font-size: 11px; word-break: break-word; }
+    .box-pad { padding: 1.4rem 1rem; }
+    .col { padding: 1.2rem 1rem; }
   }
 </style>
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Aggelos — Product-Led Growth Advisory",
-  "description": "Senior PLG advisor and growth mentor for SaaS founders. Helping product-led companies turn usage into revenue.",
-  "url": "https://growthproductmanager.com",
-  "image": "https://growthproductmanager.com/og-image.jpg",
-  "email": "aggelos[at]growthsandwich.com",
-  "sameAs": [
-    "https://www.linkedin.com/in/growth-product-manager/"
-  ],
-  "founder": {
-    "@type": "Person",
-    "name": "Aggelos",
-    "jobTitle": "Product-Led Growth Advisor",
-    "url": "https://www.linkedin.com/in/growth-product-manager/",
-    "knowsAbout": [
-      "Product-Led Growth",
-      "Product-Led Sales",
-      "B2B SaaS",
-      "Growth Strategy",
-      "Pricing and Packaging",
-      "Enterprise GTM"
-    ]
-  },
-  "areaServed": "Worldwide",
-  "serviceType": [
-    "Growth Mentorship",
-    "Strategic PLG Advisory"
-  ]
-}
-</script>
 </head>
 <body>
 
 <div class="mobile-photo">
-  <img src="photo.jpeg" alt="Aggelos">
+  <img src="photo.jpeg" alt="Aggelos"
+       onerror="this.src='photo.jpg'">
 </div>
 
 <div class="layout">
@@ -298,23 +315,25 @@
     <div class="box">
       <div class="box-pad">
         <h3>When Founders Call Me</h3>
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th style="width: 45px;">#</th>
-              <th>Situation</th>
-              <th style="width: 120px;">Track</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>01</td><td>You hired your first growth lead and want to set them up to win</td><td>Mentorship</td></tr>
-            <tr><td>02</td><td>PLG exists but isn't converting to paid — nobody owns the fix</td><td>Advisory</td></tr>
-            <tr><td>03</td><td>Product and sales keep stepping on each other</td><td>Advisory</td></tr>
-            <tr><td>04</td><td>Experimentation is happening but decisions aren't moving</td><td>Both</td></tr>
-            <tr><td>05</td><td>You need senior growth thinking without a full-time VP</td><td>Mentorship</td></tr>
-            <tr><td>06</td><td>Your upgrade path, PQLs, or pricing need a serious rethink</td><td>Advisory</td></tr>
-          </tbody>
-        </table>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 40px;">#</th>
+                <th>Situation</th>
+                <th style="width: 100px;">Track</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>01</td><td>You hired your first growth lead and want to set them up to win</td><td>Mentorship</td></tr>
+              <tr><td>02</td><td>PLG exists but isn't converting to paid — nobody owns the fix</td><td>Advisory</td></tr>
+              <tr><td>03</td><td>Product and sales keep stepping on each other</td><td>Advisory</td></tr>
+              <tr><td>04</td><td>Experimentation is happening but decisions aren't moving</td><td>Both</td></tr>
+              <tr><td>05</td><td>You need senior growth thinking without a full-time VP</td><td>Mentorship</td></tr>
+              <tr><td>06</td><td>Your upgrade path, PQLs, or pricing need a serious rethink</td><td>Advisory</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
@@ -340,21 +359,56 @@
     <div class="box">
       <div class="box-pad">
         <h3>Find Me</h3>
-        <table class="data-table">
-          <thead>
-            <tr><th>Platform</th><th>Description</th><th>Link</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>LinkedIn</td><td>Professional network</td><td><a href="https://www.linkedin.com/in/growth-product-manager/" target="_blank">linkedin.com</a></td></tr>
-            <tr><td>Email</td><td>Direct contact</td><td><a href="/cdn-cgi/l/email-protection#88e9efefede4e7fbc8effae7fffce0fbe9e6ecffe1ebe0a6ebe7e5"><span class="__cf_email__" data-cfemail="b3d2d4d4d6dfdcc0f3d4c1dcc4c7dbc0d2ddd7c4dad0db9dd0dcde">[email&#160;protected]</span></a></td></tr>
-          </tbody>
-        </table>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Platform</th><th>Description</th><th>Link</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>LinkedIn</td><td>Professional network</td><td><a href="https://www.linkedin.com/in/growth-product-manager/" target="_blank">linkedin.com</a></td></tr>
+              <tr><td>Email</td><td>Direct contact</td><td><span id="email-link"></span></td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
     <div class="box">
       <div class="cta-inner">
         <p>No pitch. A conversation about where growth is stuck and whether I can help.</p>
-        <a href="/cdn-cgi/l/email-protection#3d5c5a5a5851524e7d5a4f524a4955
+        <a id="cta-email" href="#" class="cta-btn">Book a call →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Photo with fallback: tries .jpeg first, falls back to .jpg -->
+  <div class="photo-side">
+    <img src="photo.jpeg" alt="Aggelos"
+         onerror="this.onerror=null; this.src='photo.jpg';">
+  </div>
+
+</div>
+
+<!-- Email injection via JS to defeat Cloudflare email obfuscation -->
+<script>
+(function(){
+  var u = 'aggelos';
+  var d = 'growthsandwich.com';
+  var full = u + '@' + d;
+  var link = document.getElementById('email-link');
+  if(link){
+    link.innerHTML = '<a href="mai'+'lto:'+full+'">'+full+'</a>';
+  }
+  var cta = document.getElementById('cta-email');
+  if(cta){
+    cta.href = 'mai'+'lto:'+full;
+  }
+})();
+</script>
+
+</body>
+</html>
+
 
 
