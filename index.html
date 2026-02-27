@@ -115,7 +115,7 @@
     padding: 0 0 4rem 1.8rem;
   }
 
-  /* Photo — FIX: added background color fallback */
+  /* Photo */
   .photo-side {
     position: fixed;
     top: 0;
@@ -184,7 +184,7 @@
   }
   .arrow-item span:first-child { flex-shrink: 0; }
 
-  /* Table — FIX: responsive */
+  /* Table */
   .table-wrap {
     width: 100%;
     overflow-x: auto;
@@ -211,7 +211,7 @@
   }
   .data-table tbody tr:last-child td { border-bottom: none; }
 
-  /* Links — FIX: email rendered by JS to defeat Cloudflare obfuscation */
+  /* Links */
   a { color: #000; text-decoration: underline; text-underline-offset: 2px; }
   a:hover { opacity: 0.6; }
 
@@ -263,7 +263,6 @@
     .cta-inner { flex-direction: column; gap: 1rem; align-items: flex-start; }
     h2 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
 
-    /* FIX: table doesn't break on mobile */
     .data-table { font-size: 11px; }
     .data-table thead th { font-size: 11px; padding: 0.5rem 0.6rem; }
     .data-table tbody td { padding: 0.6rem; font-size: 11px; word-break: break-word; }
@@ -295,8 +294,8 @@
       <div class="box-pad">
         <h2>What I Do</h2>
         <p class="body-text">I work with founders and growth leaders at product-led SaaS companies. I help with the growth system and with the person running it.</p>
-        <p class="body-text">I'm a growth advisor and a licensed psychotherapist with 12+ years across consulting, founding, and enterprise product, including product-led sales and hybrid GTM inside large organizations.</p>
-        <p class="body-text">Most growth problems that stick around aren't just strategy problems. It's the growth lead who won't take big swings because they're afraid of being wrong, or the founder who keeps overriding their growth hire because letting go feels impossible, or product and sales clashing not over process but over trust. I work on both.</p>
+        <p class="body-text">Growth advisor and licensed psychotherapist. 12+ years across consulting, founding, and enterprise product, including product-led sales and hybrid GTM inside large organizations.</p>
+        <p class="body-text">If PLG isn't converting to revenue and nobody owns the fix, that's typically when I get the call.</p>
       </div>
     </div>
 
@@ -304,14 +303,13 @@
       <div class="two-col-inner">
         <div class="col col-left">
           <h3>Growth Mentorship</h3>
-          <p>For founders who hired a growth lead and want them to win.</p>
-          <p>I become the senior thinking partner your growth hire doesn't have yet. Regular sessions, async support, and real-time guidance on the actual work they're doing, but also the stuff that doesn't show up in a sprint board, like the weight of owning a number nobody else fully understands, making decisions when the data is unclear, or learning how to manage up without disappearing.</p>
-          <p>They level up faster, not just on the tactical side but as people who can actually carry the role.</p>
+          <p>For founders who hired a growth lead and want them to win. I become the senior thinking partner for your growth hire. Regular sessions, async support, real-time guidance on the work they're actually doing.</p>
+          <p>They level up faster. You avoid expensive mistakes.</p>
         </div>
         <div class="col">
           <h3>Strategic Advisory</h3>
           <p>For founders and growth leaders. PLG strategy, upgrade paths, product-sales alignment, experimentation, pricing, growth roadmap.</p>
-          <p>I've done this across 50+ companies and at this point I know where things typically break before the team sees it. Small interventions in the right places make the difference between a growth system that compounds and one that spins. I advise on what to prioritize, what to stop doing, and what's actually blocking progress, whether that's a funnel problem, a pricing problem, or two teams that don't trust each other.</p>
+          <p>I've done this across 50+ companies and I know where things typically break before the team sees it. I advise on what to prioritize, what to stop doing, and what's actually blocking progress.</p>
         </div>
       </div>
     </div>
@@ -346,7 +344,7 @@
         <div class="col col-left">
           <h3>About</h3>
           <p>12+ years in B2B SaaS across consulting, founding, and enterprise product management. Currently a Strategic Growth PM at IBM working across PLG, product-led sales, and enterprise GTM. Licensed psychotherapist working with senior tech professionals.</p>
-          <p>I've worked with 50+ companies on growth strategy, pricing, onboarding, and revenue systems. I also understand why smart people get stuck, and I work on that directly.</p>
+          <p>I've worked with 50+ companies on growth strategy, pricing, onboarding, and revenue systems.</p>
         </div>
         <div class="col">
           <h3>Expertise</h3>
@@ -387,7 +385,6 @@
 
   </div>
 
-  <!-- Photo with fallback: tries .jpeg first, falls back to .jpg -->
   <div class="photo-side">
     <img src="photo.jpeg" alt="Aggelos"
          onerror="this.onerror=null; this.src='photo.jpg';">
@@ -395,7 +392,6 @@
 
 </div>
 
-<!-- Email injection via JS to defeat Cloudflare email obfuscation -->
 <script>
 (function(){
   var u = 'aggelos';
